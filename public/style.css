@@ -1,0 +1,116 @@
+h1 {
+    text-align: center;
+    margin-top: 21px;
+}
+
+.sub-header {
+    display: flex;
+}
+
+.links {
+    width: 33.33%;
+}
+
+.page-name {
+    font-size: 22px;
+    width: 33.33%;
+    text-align: center;
+    margin: auto;
+}
+
+.earnings {
+    text-align: right;
+    width: 33.33%;
+}
+
+
+.order-form {
+    margin: auto;
+}
+
+.submit-button {
+    text-align: center;
+}
+
+.main-hr {
+    text-align: center;
+    background-color: Blue;
+    width: 100%;
+    height: 5px;
+}
+.admin-hr {
+    text-align: center;
+    background-color: green;
+    width: 100%;
+    height: 5px;
+}
+
+.sub-hr {
+    text-align: center;
+    background-color: black;
+    width: 100%;
+    height: 2px;
+}
+
+.main-table {
+    table-layout: fixed;
+    margin: auto;
+
+}
+
+.main-table,
+.main-table th,
+.main-table td {
+    border: black 2px solid;
+}
+
+.main-table th {
+    background-color: #6666FF;
+}
+
+.main-table td {
+    text-align: center;
+}
+
+.name,
+.type,
+.order-date {
+    width: 200px;
+}
+
+.no,
+.quantity {
+    width: 50px;
+}
+
+.total-amount,
+.payment-status,
+.shipping-status,
+.detail-link {
+    width: 80px;
+}
+
+.order-compleate-message {
+    text-align: center;
+}
+
+.redirect-link {
+    text-align: center;
+}
+
+.order-detail-message {
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+.order-detail-message p {
+    border-radius: 3px;
+    border: 1px solid;
+    text-align: left;
+    padding: 5px;
+}
+
+.email-detail {
+    width: 200px;
+}
