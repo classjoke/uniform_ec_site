@@ -28,7 +28,7 @@
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td><input name="address" type="text"></td>
+					<td><input name="address" type="text" value="{{$address}}"></td>
 				</tr>
 				<tr>
 					<th>商品</th>
