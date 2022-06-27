@@ -17,7 +17,7 @@
 
 		<div class="sub-header">
 			<div class="links">
-				<a href="/uniformRegister">商品登録</a>　　
+				<a href="{{ route('uniform.insert') }}">商品登録</a>　　
 				商品削除:
 				<select name="uniform" id="uniform">
 					@foreach ($uniformList as $uniform)
@@ -87,6 +87,7 @@
 		</table>
 	</main>
 	<footer>
+		{{-- <img src="{{ asset('/uploads/データ抽出_1.png') }}"> --}}
 	</footer>
 
 </body>

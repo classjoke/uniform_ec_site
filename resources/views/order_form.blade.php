@@ -74,7 +74,11 @@
 		</form>
 	</main>
 	<footer>
-
+		@foreach ($image as $image_path)
+			@isset ($image_path['image_path'])
+				<img width="200" height="200" src='{{asset("uploads/" . $image_path['image_path'])}}'>
+			@endisset
+		@endforeach
 	</footer>
 </body>
 
