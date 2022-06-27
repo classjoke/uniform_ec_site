@@ -17,11 +17,13 @@ class OrderFormController extends Controller
             $user_id = $request->session()->get('userInfo')->id;
             $name = User::find($user_id)->name;
             $email = User::find($user_id)->email;
-            return view('order_form', ['name'=>$name, 'email'=>$email]);
+            $address = User::find($user_id)->address;
+            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address]);
         }else{
             $name = "";
             $email = "";
-            return view('order_form', ['name'=>$name, 'email'=>$email]);
+            $address = "";
+            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address]);
         }
     }
     
