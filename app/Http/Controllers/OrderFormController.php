@@ -14,27 +14,15 @@ class OrderFormController extends Controller
     // 初期画面用アクション
     public function index(Request $request) {
         // 画像情報取得
-        $images = Uniform::get('image_path')->toArray();
-        $image_name = Uniform::get('name')->toArray();
-
-        // 画像のURLと画像名を同様の配列の要素にする処理
-       for ($i=0;$i<count($images);$i++) {
-        $new_images[] = array_merge($images[$i], $image_name[$i]);
-       }
+        $uniform = Uniform::all();
 
         if($request->session()->has('userInfo')){
             $user_id = $request->session()->get('userInfo')->id;
-            $name = User::find($user_id)->name;
-            $email = User::find($user_id)->email;
+            $user =  User::find($user_id);
 
-            $address = User::find($user_id)->address;
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'images'=>$new_images]);
+            return view('order_form', ['user' => $user,'uniformList'=>$uniform]);
         }else{
-            $name = "";
-            $email = "";
-            $address = "";
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'images'=>$new_images]);
-
+            return view('order_form', ['uniformList' => $uniform]);
         }
     }
     
@@ -56,13 +44,19 @@ class OrderFormController extends Controller
         $form['order_date'] = date('Y-m-d');
         $order_data = Order::create($form);
         
+        $uniform = Uniform::find($form['uniform_id']);
+
         //表示に必要な値を補完
         $form['id'] = $order_data['id'];
-        $form['uniform_name'] = Uniform::find($form['uniform_id'])->name;
-        $form['total_price'] = (Uniform::find($form['uniform_id'])->price) * $form['quantity'];
+        $form['uniform_name'] = $uniform->name;
+        $form['total_price'] = $uniform->price * $form['quantity'];
         
         //注文したらメールを送信
-        //Mail::send(new OrderMail($form));
+        // Mail::send(new OrderMail($form));
+
+        // 在庫数現象処理
+        $uniform->stock -= $form['quantity'];
+        $uniform->save();
 
         return view('order_confirm', ['data'=>$form]);
     }

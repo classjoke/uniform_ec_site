@@ -33,11 +33,11 @@
     		<table class="order-form">
     			<tr>
     				<th>ユーザーID</th>
-    				<td><input name="login_id" type="text"></td>
+    				<td><input name="login_id" type="text" required="required"></td>
     			</tr>
     			<tr>
     				<th>パスワード</th>
-    				<td><input name="password" type="password"></td>
+    				<td><input name="password" type="password" required="required"></td>
     			</tr>
     			<tr>
     				<td colspan="2" class="submit-button">
