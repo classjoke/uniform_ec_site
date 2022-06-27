@@ -32,15 +32,15 @@
 			@csrf
 				<tr>
 					<th>ユニフォーム名</th>
-					<td><input name="name" type="text"></td>
+					<td><input name="name" type="text" required="required"></td>
 				</tr>
 				<tr>
 					<th>価格</th>
-					<td><input name="price" type="number" min=1></td>
+					<td><input name="price" type="number" min=1 required="required"></td>
 				</tr>
 				<tr>
 					<th>在庫</th>
-					<td><input name="stock" type="number" min=1></td>
+					<td><input name="stock" type="number" min=1 required="required"></td>
 				</tr>
 				<tr>
 					<th>画像</th>

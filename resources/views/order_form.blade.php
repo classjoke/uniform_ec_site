@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{asset('style.css')}}">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<title>OrderForm</title>
 </head>
 
@@ -22,22 +23,22 @@
 			<div class="page-name">注文画面</div>
 
 			<div class="earnings">
-				@if ($name !== "")
+				@isset($user)
 				<div class="logout">
 					<a href="{{route('logout')}}">ログアウト</a>
 				</div>			
-				@endif
+				@endisset
 			</div>
 		</div>
 		<hr class="sub-hr">
 	</header>
 	<main>
 		<div class="container">
-			@foreach ($images as $image)
-				@isset ($image)
+			@foreach ($uniformList as $uniform)
+				@isset ($uniform->image_path)
 				<div class="item">
-					<img width="200" height="200" src='{{asset("uploads/" . $image['image_path'])}}'>
-					<p>{{$image['name']}}</p>
+					<img width="200" height="200" src='{{asset("uploads/" . $uniform->image_path)}}'>
+					<p>{{$uniform->name}}</p>
 				</div>
 				@endisset
 			@endforeach
@@ -48,31 +49,32 @@
 		<table class="order-form">
 				<tr>
 					<th>名前</th>
-					<td><input name="name" type="text" value="{{$name}}"></td>
+					<td><input name="name" type="text" value="{{@$user->name}}" required="required"></td>
 				</tr>
 				<tr>
 					<th>mail</th>
-					<td><input name="email" type="email" value="{{$email}}"></td>
+					<td><input name="email" type="email" value="{{@$user->email}}" required="required"></td>
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td><input name="address" type="text" value="{{$address}}"></td>
+					<td><input name="address" type="text" value="{{@$user->address}}" required="required"></td>
 				</tr>
 				<tr>
 					<th>商品</th>
 					<td>
-						<select name="uniform_id">
-							<option value="1">ユニフォームA</option>
-							<option value="2">ユニフォームB</option>
-							<option value="3">ユニフォームC</option>
-							<option value="4">ユニフォームD</option>
-							<option value="5">ユニフォームE</option>
+						<select name="uniform_id" id="uniforms">
+							@foreach($uniformList as $uniform)
+								<option value="{{$uniform->id}}">{{$uniform->name}}</option>
+							@endforeach
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<th>個数</th>
-					<td><input name="quantity" type="number" min=1 max={{}}></td>
+					<td>
+						<input @if($uniformList[0]->stock <= 0) style="display:none" @endif id="quantity" name="quantity" type="number" min=1 max={{$uniformList[0]->stock}} required="required">
+						<div class="soldOut" id="soldOut" @if($uniformList[0]->stock > 0) style="display:none" @endif>SOLD OUT!!</div>
+					</td>
 				</tr>
 				<tr>
 					<th>備考欄</th>
@@ -89,4 +91,25 @@
 	</footer>
 </body>
 
+<script>
+	const stocks = @json($uniformList);
+	$('#uniforms').change(function() {
+		let selected = $('option:selected');
+		let uniform_id = selected.val();
+		let index = selected.index();
+
+		let stock = stocks[index].stock;
+		let quantity = document.getElementById('quantity');
+		if(stock <= 0){
+			quantity.style.display ="none";
+			document.getElementById('soldOut').style.display = "inline-block";
+		}else {
+			quantity.style.display ="inline-block";
+			document.getElementById('soldOut').style.display = "none";
+			quantity.max = stock;
+			quantity.value = 1;
+		}
+
+	})
+</script>
 </html>

@@ -32,23 +32,23 @@
                 @csrf
                 <tr>
                     <th>氏名</th>
-                    <td><input name="name" type="text"></td>
+                    <td><input name="name" type="text" required="required"></td>
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
-                    <td><input name="email" type="text" min=1></td>
+                    <td><input name="email" type="email" required="required"></td>
                 </tr>
                 <tr>
                     <th>パスワード</th>
-                    <td><input name="password" type="password" min=1></td>
+                    <td><input name="password" type="password" required="required"></td>
                 </tr>
                 <tr>
                     <th>住所</th>
-                    <td><input name="address" type="text" min=1></td>
+                    <td><input name="address" type="text" required="required"></td>
                 </tr>
                 <tr>
                     <th>ログインID</th>
-                    <td><input name="login_id" type="text"></td>
+                    <td><input name="login_id" type="text" required="required"></td>
                 </tr>
                 <tr>
                     <td colspan="2" class="submit-button"><input type="submit" value="登録"></td>
