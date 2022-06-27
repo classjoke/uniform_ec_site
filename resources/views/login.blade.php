@@ -31,24 +31,26 @@
 		<form action="{{route('login')}}" method="post">
     		@csrf
     		<table class="order-form">
-    				<tr>
-    					<th>ユーザーID</th>
-    					<td><input name="login_id" type="text"></td>
-    				</tr>
-    				<tr>
-    					<th>パスワード</th>
-    					<td><input name="password" type="password"></td>
-    				</tr>
-    				<tr>
-    					<td colspan="2" class="submit-button">
-    						<input type="submit" value="ログイン">
-    					</td>
-    				</tr>
+    			<tr>
+    				<th>ユーザーID</th>
+    				<td><input name="login_id" type="text"></td>
+    			</tr>
+    			<tr>
+    				<th>パスワード</th>
+    				<td><input name="password" type="password"></td>
+    			</tr>
+    			<tr>
+    				<td colspan="2" class="submit-button">
+    					<input type="submit" value="ログイン">
+    				</td>
+    			</tr>
     		</table>
 		</form>
         <div style="text-align: center">
-            <a href="{{route('order.form')}}">ゲストとして注文する</a>
+            <div><a href="{{route('order.form')}}">ゲストとして注文する</a></div>
+			<div><a href="{{route('user.register')}}">新規登録を行う</a></div>
         </div>
+		
 	</main>
 	<footer>
 	</footer>
