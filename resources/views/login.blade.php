@@ -33,11 +33,11 @@
     		<table class="order-form">
     			<tr>
     				<th>ユーザーID</th>
-    				<td><input name="login_id" type="text" required="required"></td>
+    				<td><input name="login_id" type="text" required="required" value="{{ old('login_id')}}"></td>
     			</tr>
     			<tr>
     				<th>パスワード</th>
-    				<td><input name="password" type="password" required="required"></td>
+    				<td><input name="password" type="password" required="required" value="{{ old('password')}}"></td>
     			</tr>
     			<tr>
     				<td colspan="2" class="submit-button">
@@ -46,10 +46,18 @@
     			</tr>
     		</table>
 		</form>
+		
+		@if(session('error'))
+			<div class="password-missed" role="alert" style="display:block">
+				{{ session('error') }}
+			</div>
+		@endif
+
         <div style="text-align: center">
             <div><a href="{{route('order.form')}}">ゲストとして注文する</a></div>
 			<div><a href="{{route('user.register')}}">新規登録を行う</a></div>
         </div>
+		
 		
 	</main>
 	<footer>

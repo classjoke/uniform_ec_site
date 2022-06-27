@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Uniform;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
+use Validator;
 
 class OrderFormController extends Controller
 {
@@ -30,6 +31,19 @@ class OrderFormController extends Controller
     // 登録用コントローラ
     public function insert(Request $request){
         $form = $request->all();
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'uniform_id' => 'required',
+            'quantity' => 'required | min:1'
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()->with('error' , '入力値が不足しています。')->withInput();
+        }
+
         unset($form['_token']);
         if ($request->session()->has('user_id')) {
             //ログインしている場合
