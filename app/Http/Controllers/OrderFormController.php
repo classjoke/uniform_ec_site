@@ -14,7 +14,13 @@ class OrderFormController extends Controller
     // 初期画面用アクション
     public function index(Request $request) {
         // 画像情報取得
-        $image = Uniform::get('image_path')->toArray();
+        $images = Uniform::get('image_path')->toArray();
+        $image_name = Uniform::get('name')->toArray();
+
+        // 画像のURLと画像名を同様の配列の要素にする処理
+       for ($i=0;$i<count($images);$i++) {
+        $new_images[] = array_merge($images[$i], $image_name[$i]);
+       }
 
         if($request->session()->has('userInfo')){
             $user_id = $request->session()->get('userInfo')->id;
@@ -22,12 +28,12 @@ class OrderFormController extends Controller
             $email = User::find($user_id)->email;
 
             $address = User::find($user_id)->address;
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'image'=>$image]);
+            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'images'=>$new_images]);
         }else{
             $name = "";
             $email = "";
             $address = "";
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'image'=>$image]);
+            return view('order_form', ['name'=>$name, 'email'=>$email, 'address'=>$address, 'images'=>$new_images]);
 
         }
     }
@@ -56,8 +62,8 @@ class OrderFormController extends Controller
         $form['total_price'] = (Uniform::find($form['uniform_id'])->price) * $form['quantity'];
         
         //注文したらメールを送信
-        Mail::send(new OrderMail($form));
-        
+        //Mail::send(new OrderMail($form));
+
         return view('order_confirm', ['data'=>$form]);
     }
     
