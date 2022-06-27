@@ -11,8 +11,25 @@
 
 <body>
 	<header>
-		<h1>注文画面</h1>
+		<h1>受注管理システム</h1>
 		<hr class="main-hr">
+
+		<div class="sub-header">
+			<div class="links">
+				
+			</div>
+
+			<div class="page-name">注文画面</div>
+
+			<div class="earnings">
+				@if ($name !== "")
+				<div class="logout">
+					<a href="{{route('logout')}}">ログアウト</a>
+				</div>			
+				@endif
+			</div>
+		</div>
+		<hr class="sub-hr">
 	</header>
 	<main>
 		<form action="{{route('order.form')}}" method="post">
@@ -28,7 +45,7 @@
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td><input name="address" type="text"></td>
+					<td><input name="address" type="text" value="{{$address}}"></td>
 				</tr>
 				<tr>
 					<th>商品</th>

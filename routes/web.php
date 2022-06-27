@@ -7,6 +7,7 @@ use App\Http\Controllers\UserRegisterController;
 use App\Http\Controllers\OrderListController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\UniformRegisterController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('login', function () {
 
 // ログイン画面 ログイン
 Route::post('login', [LoginController::class, 'login'])->name('login');
+
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
 // 新規ユーザー登録機能 初期画面
 Route::get('user/register', function () {

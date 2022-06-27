@@ -17,7 +17,7 @@
 
         <div class="sub-header">
             <div class="links">
-                <!-- links -->
+                <a href="{{route('order.list')}}">注文管理</a>
             </div>
 
             <div class="page-name">注文詳細</div>
@@ -33,51 +33,63 @@
         <table class="main-table">
             <tr>
                 <th>No.</th>
-                <td>1</td>
+                <td>{{$orderDetail->id}}</td>
             </tr>
             <tr>
                 <th>名前</th>
-                <td>田中太郎</td>
+                <td>{{$orderDetail->user->name}}</td>
             </tr>
             <tr>
                 <th>住所</th>
-                <td>東京都 ○○</td>
+                <td>{{$orderDetail->user->address}}</td>
             </tr>
             <tr>
                 <th>メールアドレス</th>
-                <td class="email-detail">example@example.com</td>
+                <td class="email-detail">{{$orderDetail->user->email}}</td>
             </tr>
             <tr>
                 <th>商品種類</th>
-                <td>ユニフォーム１</td>
+                <td>{{$orderDetail->uniform->name}}</td>
             </tr>
             <tr>
                 <th>購入個数</th>
-                <td>2個</td>
+                <td>{{$orderDetail->quantity}}</td>
             </tr>
             <tr>
                 <th>注文日時</th>
-                <td>2022/06/20</td>
+                <td>{{$orderDetail->order_date}}</td>
             </tr>
             <tr>
                 <th>入金状況</th>
                 <td class="status">
-                    <div id="payment-status">未</div>
-                    <div id="payment-btn"><button type="button" onclick="clickPayBtn()">入金済みにする</button></div>
+                    <div id="payment-status">
+                        @if($orderDetail->payment_status == 0)
+                            未入金
+                            <div id="payment-btn"><button type="button" onclick="clickPayBtn()">入金済みにする</button></div>
+                        @elseif($orderDetail->payment_status == 1)
+                            入金済み
+                        @endif
+                    </div>
                 </td>
             </tr>
             <tr>
                 <th>発送状況</th>
                 <td class="status">
-                    <div id="shipping-status">未</div>
-                    <div id="shipping-btn"><button type="button" onclick="clickShipBtn()">発送済みとする</button></div>
+                    <div id="shipping-status">
+                        @if($orderDetail->shipping_status == 0)
+                            未発送
+                            <div id="shipping-btn"><button type="button" onclick="clickShipBtn()">発送済みにする</button></div>
+                        @elseif($orderDetail->shipping_status == 1)
+                            入金済み
+                        @endif
+                    </div>
                 </td>
             </tr>
         </table>
 
         <div class="order-detail-message">
             <div>備考</div>
-            <p>25日以降の発送だと嬉しいです。</p>
+            <p>{{$orderDetail->remarks_column}}</p>
         </div>
     </main>
     <footer>
@@ -88,16 +100,18 @@
 <script>
     function clickShipBtn() {
         let shipStatus = document.getElementById('shipping-status');
-
-        shipStatus.textContent = "発送済み";
-        document.getElementById('shipping-btn').style.display = "none";
+        if(confirm('発送済みメールを送信します、よろしいですか？')){
+            shipStatus.textContent = "発送済み";
+            document.getElementById('shipping-btn').style.display = "none";
+        }
     }
 
     function clickPayBtn() {
         let payStatus = document.getElementById('payment-status');
-
-        payStatus.textContent = "入金済み";
-        document.getElementById('payment-btn').style.display = "none";
+        if(confirm('入金済みメールを送信します、よろしいですか？')){
+            payStatus.textContent = "入金済み";
+            document.getElementById('payment-btn').style.display = "none";
+        }
     }
 </script>
 

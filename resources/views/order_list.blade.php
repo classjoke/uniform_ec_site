@@ -30,9 +30,12 @@
 			<div class="page-name">受注管理一覧</div>
 
 			<div class="earnings">
+				
 				<button type="button" id="visualization" onclick="visualization()">
 					削除済み商品の注文を表示
 				</button>
+
+				<a href="{{route('logout')}}">ログアウト</a>
 			</div>
 		</div>
 		<hr class="sub-hr">
@@ -78,8 +81,7 @@
 								発送済み
 							@endisset	
 						</td>
-						{{-- <td><a href="{{route('order.detail')}}?id={{$orderInfo->id}}">詳細</a></td> --}}
-						<td><a href="">詳細</a></td>
+						<td><a href="{{route('order.detail')}}?id={{$orderInfo->id}}">詳細</a></td>
 					</tr>
             @endforeach
 		</table>
@@ -95,11 +97,11 @@
 	const selectBox = document.getElementById('uniform');
 	deletebutton.forEach(eachbutton => {
 		eachbutton.addEventListener('click', () => {
-			let selected =  selectBox.options[selectBox.selectedIndex]
-			let uniformName =selected.text;
-			let uniform_id = selected.value;
+			const selected =  selectBox.options[selectBox.selectedIndex]
+			const uniformName =selected.text;
+			const uniform_id = selected.value;
 			
-			let delete_flag = confirm(uniformName + 'を本当に削除しますか？');
+			const delete_flag = confirm(uniformName + 'を本当に削除しますか？');
 			if(delete_flag) {
 				selected.remove();
 				submit(uniform_id);
@@ -119,11 +121,25 @@
 			body : "id="+uniform_id
 		});
 		console.log('削除成功');
+		document.location.reload()
 	}
 
 	function visualization (){
+		const button = document.getElementById('visualization');
 		const deleted = document.getElementsByClassName('deleted');
-		deleted[0].style.display = 'table-row';
+		if(deleted[0].style.display == "none") {
+			for( i = 0 ; i < deleted.length ; i++){
+				deleted[i].style.display = 'table-row';
+			}
+			button.textContent = "削除済み商品の注文を非表示";
+		}else{
+			for( i = 0 ; i < deleted.length ; i++){
+				deleted[i].style.display = 'none';
+			}
+			button.textContent = "削除済み商品の注文を表示";
+		}
+
+
 	}
 </script>
 </html>
