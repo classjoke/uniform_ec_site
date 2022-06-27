@@ -55,6 +55,11 @@
                 </tr>
         	</table>
         </form>
+        @if(session('error'))
+			<div class="password-missed" role="alert" style="display:block">
+				{{ session('error') }}
+			</div>
+		@endif
     </main>
     <footer>
 

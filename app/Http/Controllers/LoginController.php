@@ -12,6 +12,9 @@ class LoginController extends Controller
         $user = User::where('login_id', '=', $request->login_id)
             ->where('password', '=', $request->password)->first();
         
+        if(empty($user)) {
+           return redirect()->back()->with('error', 'ユーザーIDまたはパスワードが間違っています。')->withInput(); 
+        }
         // セッションにUserInfoとして保存
         $request->session()->put('userInfo',$user);
         

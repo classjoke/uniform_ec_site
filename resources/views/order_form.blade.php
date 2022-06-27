@@ -72,8 +72,12 @@
 				<tr>
 					<th>個数</th>
 					<td>
-						<input @if($uniformList[0]->stock <= 0) style="display:none" @endif id="quantity" name="quantity" type="number" min=1 max={{$uniformList[0]->stock}} required="required">
-						<div class="soldOut" id="soldOut" @if($uniformList[0]->stock > 0) style="display:none" @endif>SOLD OUT!!</div>
+						@if (count($uniformList) !== 0)
+							<input @if($uniformList[0]->stock <= 0) style="display:none" @endif id="quantity" name="quantity" type="number" min=1 max={{$uniformList[0]->stock}} required="required">
+							<div class="soldOut" id="soldOut" @if($uniformList[0]->stock > 0) style="display:none" @endif>SOLD OUT!!</div>
+						@else
+							ユニフォームが存在しないため個数選択不可
+						@endif
 					</td>
 				</tr>
 				<tr>
@@ -85,6 +89,11 @@
 				</tr>
 		</table>
 		</form>
+		@if(session('error'))
+			<div class="password-missed" role="alert" style="display:block">
+				{{ session('error') }}
+			</div>
+		@endif
 	</main>
 	<footer>
 		
