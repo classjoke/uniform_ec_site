@@ -114,3 +114,22 @@ h1 {
 .email-detail {
     width: 200px;
 }
+
+.container {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 6% 6%;
+    margin-bottom: 50px;
+}
+
+.item {
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+
+.item p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}

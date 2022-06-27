@@ -32,7 +32,18 @@
 		<hr class="sub-hr">
 	</header>
 	<main>
-		<form action="{{route('order.form')}}" method="post">
+		<div class="container">
+			@foreach ($images as $image)
+				@isset ($image)
+				<div class="item">
+					<img width="200" height="200" src='{{asset("uploads/" . $image['image_path'])}}'>
+					<p>{{$image['name']}}</p>
+				</div>
+				@endisset
+			@endforeach
+		</div>
+
+		<form action="{{route('order.form')}}" method="post" style="margin-bottom: 10%;">
 		@csrf
 		<table class="order-form">
 				<tr>
@@ -61,7 +72,7 @@
 				</tr>
 				<tr>
 					<th>個数</th>
-					<td><input name="quantity" type="number" min=1></td>
+					<td><input name="quantity" type="number" min=1 max={{}}></td>
 				</tr>
 				<tr>
 					<th>備考欄</th>
@@ -74,11 +85,7 @@
 		</form>
 	</main>
 	<footer>
-		@foreach ($image as $image_path)
-			@isset ($image_path['image_path'])
-				<img width="200" height="200" src='{{asset("uploads/" . $image_path['image_path'])}}'>
-			@endisset
-		@endforeach
+		
 	</footer>
 </body>
 
