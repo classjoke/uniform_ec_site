@@ -6,7 +6,6 @@ use App\Http\Controllers\OrderFormController;
 use App\Http\Controllers\UserRegisterController;
 use App\Http\Controllers\OrderListController;
 use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\UniformRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +48,5 @@ Route::get('order/list', [OrderListController::class, 'index'])->name('order.lis
 
 Route::post('uniform/delete', [OrderListController::class, 'delete'])->name('uniform.delete');
 
-Route::get('order/detail',[OrderDetailController::class,'index'])->name('order.detail');
+Route::get('order/detail',[OrderDetailController::class,'index'])->name('order,detail');
 
-// 商品登録画面 登録
-Route::get('uniform/insert', [UniformRegisterController::class, 'index'])->name('uniform.insert');
-Route::post('uniform/insert', [UniformRegisterController::class, 'register'])->name('uniform.insert');

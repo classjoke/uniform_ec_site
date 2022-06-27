@@ -13,21 +13,17 @@ class OrderFormController extends Controller
 {
     // 初期画面用アクション
     public function index(Request $request) {
-        // 画像情報取得
-        $image = Uniform::get('image_path')->toArray();
-
         if($request->session()->has('userInfo')){
             $user_id = $request->session()->get('userInfo')->id;
             $name = User::find($user_id)->name;
             $email = User::find($user_id)->email;
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'image'=>$image]);
-        }else {
+            return view('order_form', ['name'=>$name, 'email'=>$email]);
+        }else{
             $name = "";
             $email = "";
-            return view('order_form', ['name'=>$name, 'email'=>$email, 'image'=>$image]);
+            return view('order_form', ['name'=>$name, 'email'=>$email]);
         }
     }
-    
     
     // 登録用コントローラ
     public function insert(Request $request){
