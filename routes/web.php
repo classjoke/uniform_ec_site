@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderListController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\UniformRegisterController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\UpdateStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,6 @@ Route::get('order/detail',[OrderDetailController::class,'index'])->name('order.d
 // 商品登録画面 登録
 Route::get('uniform/insert', [UniformRegisterController::class, 'index'])->name('uniform.insert');
 Route::post('uniform/insert', [UniformRegisterController::class, 'register'])->name('uniform.insert');
+
+Route::post('update/status/payment', [UpdateStatusController::class, 'payment'])->name('update.status.payment');
+Route::post('update/status/shipping', [UpdateStatusController::class, 'shipping'])->name('update.status.shipping');

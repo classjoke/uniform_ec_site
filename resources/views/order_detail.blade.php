@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('style.css')}}">
     <title>orderDetail</title>
 </head>
@@ -98,20 +99,44 @@
 </body>
 
 <script>
-    function clickShipBtn() {
-        let shipStatus = document.getElementById('shipping-status');
-        if(confirm('発送済みメールを送信します、よろしいですか？')){
-            shipStatus.textContent = "発送済み";
-            document.getElementById('shipping-btn').style.display = "none";
-        }
-    }
+    const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
 
     function clickPayBtn() {
         let payStatus = document.getElementById('payment-status');
         if(confirm('入金済みメールを送信します、よろしいですか？')){
             payStatus.textContent = "入金済み";
-            document.getElementById('payment-btn').style.display = "none";
+            sendPaymentMail({{ $orderDetail->id }});
         }
+    }
+
+    let sendPaymentMail = async (orderId) => {
+        const res = await fetch("{{route('update.status.payment')}}", {
+            method : 'POST',
+			headers : {
+				"X-CSRF-Token": csrfToken,
+				"Content-Type": 'application/x-www-form-urlencoded'
+			},
+			body : "id="+orderId
+        })
+    }
+
+    function clickShipBtn() {
+        let shipStatus = document.getElementById('shipping-status');
+        if(confirm('発送済みメールを送信します、よろしいですか？')){
+            shipStatus.textContent = "発送済み";
+            sendShippingMail({{ $orderDetail->id }});
+        }
+    }
+
+    let sendShippingMail = async (orderId) => {
+        const res = await fetch("{{route('update.status.shipping')}}", {
+            method : 'POST',
+			headers : {
+				"X-CSRF-Token": csrfToken,
+				"Content-Type": 'application/x-www-form-urlencoded'
+			},
+			body : "id="+orderId
+        })
     }
 </script>
 
