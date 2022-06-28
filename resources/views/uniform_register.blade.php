@@ -31,24 +31,25 @@
 			<form action="{{ route('uniform.insert') }}" method=post enctype="multipart/form-data">
 			@csrf
 				<tr>
-					<th>ユニフォーム名</th>
-					<td><input name="name" type="text" required="required"></td>
+					{{-- <th>ユニフォーム名</th> --}}
+					<td><input name="name" type="text" required="required" placeholder="ユニフォーム名"></td>
 				</tr>
 				<tr>
-					<th>価格</th>
-					<td><input name="price" type="number" min=1 required="required"></td>
+					{{-- <th>価格</th> --}}
+					<td><input name="price" type="number" min=1 required="required" placeholder="価格"></td>
 				</tr>
 				<tr>
-					<th>在庫</th>
-					<td><input name="stock" type="number" min=1 required="required"></td>
+					{{-- <th>在庫</th> --}}
+					<td><input name="stock" type="number" min=1 required="required" placeholder="在庫"></td>
 				</tr>
 				<tr>
-					<th>画像</th>
-					<td><input name="image" type="file"></td>
+					{{-- <th>画像</th> --}}
+					<td><input name="image" type="file" placeholder="画像"></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="submit-button"><input type="submit"
-						value="登録"></td>
+					<td colspan="2" class="submit-button">
+						<input type="submit" class="btn-square-so-pop" value="登録">
+					</td>
 				</tr>
 			</form>
 		</table>

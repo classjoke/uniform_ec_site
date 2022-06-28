@@ -17,8 +17,6 @@
 
 		<div class="sub-header">
 			<div class="links">
-				<a href="{{ route('uniform.insert') }}">商品登録</a>　　
-				<a href="{{ route('order.list') }}">受注管理一覧</a>　　
 				商品削除:
 				<select name="uniform" id="uniform">
 					@foreach ($uniformList as $uniform)
@@ -33,17 +31,21 @@
 
 			<div class="earnings">
 				
-				<button type="button" id="visualization" onclick="visualization()">
+				<button class="btn-square-so-pop" type="button" id="visualization" onclick="visualization()">
 					削除済み商品の注文を表示
 				</button>
 
-				<a href="{{route('logout')}}">ログアウト</a>
+				<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>
 			</div>
 		</div>
 		<hr class="sub-hr">
 	</header>
 
 	<main>
+		<div style="text-align: center; padding: 30px 0px;">
+			<a class="btn-square-so-pop" href="{{ route('uniform.insert') }}">商品登録</a>
+			<a class="btn-square-so-pop" href="{{ route('order.list') }}">注文管理</a>
+		</div>
 		<table class="main-table">
 			<tr>
 				<th class="no">No</th>
@@ -71,7 +73,7 @@
 						<td>\{{$uniform->price}}</td>
 						<td>{{$uniform->stock}}</td>
 						<td>
-							<button type="button" onclick="toggle_edit({{$uniform->id}})">
+							<button class="btn-square-so-pop" type="button" onclick="toggle_edit({{$uniform->id}})">
 								編集
 							</button>
 						</td>
@@ -91,10 +93,10 @@
 							</td>
 							<input type="hidden" name="uniform_id" value="{{$uniform->id}}">
     						<td><input type="text" name="uniform_name" value="{{$uniform->name}}"></td>
-    						<td>\<input type="text" name="uniform_price" value="{{$uniform->price}}"></td>
+    						<td><input type="text" name="uniform_price" value="{{$uniform->price}}"></td>
     						<td><input type="text" name="uniform_stock" value="{{$uniform->stock}}"></td>
     						<td class="edit_button">
-    							<input type="submit" value="確定">
+    							<input class="btn-square-so-pop" type="submit" value="確定">
     						</td>
 						</form>
 					</tr>
