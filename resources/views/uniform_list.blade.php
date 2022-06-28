@@ -49,6 +49,7 @@
 				<th class="name">商品名</th>
 				<th class="type">価格</th>
 				<th class="quantity">在庫数</th>
+				<th class="edit"></th>
 			</tr>
             @foreach ($uniformList as $uniform)
 					<tr 
@@ -56,11 +57,34 @@
 							style="display:none" 
 							class="deleted"
 						@endisset
+						id="uniform_data_{{$uniform->id}}"
 					>
 						<td>{{$uniform->id}}</td>
 						<td>{{$uniform->name}}</td>
 						<td>\{{$uniform->price}}</td>
 						<td>{{$uniform->stock}}</td>
+						<td>
+							<button type="button" onclick="toggle_edit({{$uniform->id}})">
+								編集
+							</button>
+						</td>
+					</tr>
+					<tr
+						style="display:none"
+						class="uniform_forms"
+						id="uniform_form_{{$uniform->id}}"
+					>
+						<form action='{{route("uniform.update")}}' method="post">
+							@csrf
+							<td>{{$uniform->id}}</td>
+							<input type="hidden" name="uniform_id" value="{{$uniform->id}}">
+    						<td><input type="text" name="uniform_name" value="{{$uniform->name}}"></td>
+    						<td>\<input type="text" name="uniform_price" value="{{$uniform->price}}"></td>
+    						<td><input type="text" name="uniform_stock" value="{{$uniform->stock}}"></td>
+    						<td class="edit_button">
+    							<input type="submit" value="確定">
+    						</td>
+						</form>
 					</tr>
             @endforeach
 		</table>
@@ -117,8 +141,23 @@
 			}
 			button.textContent = "削除済み商品の注文を表示";
 		}
+		const uniform_forms = document.getElementsByClassName('uniform_forms');
+		for(let i=0; i < uniform_forms.length; i++){
+			console.log(uniform_forms[i]);
+			uniform_forms[i].style.display = 'none';
+		}
+		
+	}
 
-
+	// 在庫編集
+	
+	function toggle_edit(uniform_id){
+		const uniform_data = document.getElementById('uniform_data_'+uniform_id);
+		const uniform_form = document.getElementById('uniform_form_'+uniform_id);
+		const visualization_button = document.getElementById('visualization');
+		uniform_data.style.display = "none";
+		uniform_form.style.display = "table-row";
+		visualization_button.style.display = "none";
 	}
 </script>
 </html>

@@ -65,3 +65,4 @@ Route::post('update/status/shipping', [UpdateStatusController::class, 'shipping'
 
 // 商品一覧
 Route::get('uniform/list', [UniformListController::class, 'index'])->name('uniform.list');
+Route::post('uniform/update', [UniformListController::class, 'update'])->name('uniform.update');
