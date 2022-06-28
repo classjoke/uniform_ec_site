@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\UniformRegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UpdateStatusController;
+use App\Http\Controllers\UniformListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,6 @@ Route::post('uniform/insert', [UniformRegisterController::class, 'register'])->n
 
 Route::post('update/status/payment', [UpdateStatusController::class, 'payment'])->name('update.status.payment');
 Route::post('update/status/shipping', [UpdateStatusController::class, 'shipping'])->name('update.status.shipping');
+
+// 商品一覧
+Route::get('uniform/list', [UniformListController::class, 'index'])->name('uniform.list');
