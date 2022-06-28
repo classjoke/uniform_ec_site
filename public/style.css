@@ -72,11 +72,13 @@ h1 {
 }
 
 .main-table th {
-    background-color: #6666FF;
+    background-color: #6699DD;
+    color: white;
 }
 
 .main-table td {
     text-align: center;
+    padding: 10px;
 }
 
 .name,
@@ -99,6 +101,15 @@ h1 {
 
 .order-compleate-message {
     text-align: center;
+    border: 2px solid #6699DD;
+    width: 60%;
+    margin: 30px auto;
+}
+
+.order-name {
+    background-color: #6699DD;
+    color: white;
+    line-height: 50px;
 }
 
 .redirect-link {
@@ -160,7 +171,7 @@ h1 {
     cursor: pointer;
   }
   
-  .btn-square-so-pop:active {
+.btn-square-so-pop:active {
     /*押したとき*/
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }

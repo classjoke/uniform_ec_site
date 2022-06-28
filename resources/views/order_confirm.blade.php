@@ -11,7 +11,10 @@
 
 <body>
 	<header>
-		<h1>受注管理システム</h1>
+		<div style="display: flex; align-items: center;">
+			<img style="margin: 20px; display:block;" width="20%" height="20%" src='{{asset("mainpic.jpeg")}}'>
+			<h1 style="margin-left: 17%;">受注管理システム</h1>
+		</div>
 		<hr class="main-hr">
 
 		<div class="sub-header">
@@ -19,10 +22,8 @@
 				<!-- links -->
 			</div>
 
-			<div class="page-name">注文完了画面</div>
-
+			<div class="page-name">注文完了</div>
 			<div class="earnings">
-				
 			</div>
 
 		</div>
@@ -30,11 +31,10 @@
     </header>
 
 	<main>	
-
 		<div class="order-compleate-message">
-			<div>
+			<div class="order-name">
 				{{$data['name']}}様
-				下記の商品の注文が完了いたしました。
+				下記の商品の注文が完了いたしました！
 			</div>
 
 			<div>{{$data['email']}} 宛てに振込先メールを送信いたしました。</div>
@@ -60,19 +60,16 @@
 				<td>{{$data['order_date']}}</td>
 			</tr>
 		</table>
-		<div style="text-align: center; padding-top: 30px;">
-		@isset($data['auth'])
-				<div class="logout">
-					<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>
-				</div>
-				@else
-				<div class="logout">
-					<a class="btn-square-so-pop" href="{{route('logout')}}">トップページに戻る</a>
-				</div>
-		@endisset
-		</div>
-		<div class="redirect-link">
+		<div style="text-align: center; padding: 15px 30px;">
+			<div class="logout">
+			@isset($data['auth'])
+				<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>
+			@else
+				<a class="btn-square-so-pop" href="{{route('logout')}}">トップページに戻る</a>
+			@endisset
 			<a class="btn-square-so-pop" href="{{route('order.form')}}">注文画面へもどる</a>
+			</div>
+		</div>
 		</div>
 	</main>
 

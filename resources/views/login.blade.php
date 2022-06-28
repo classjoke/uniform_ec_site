@@ -24,8 +24,8 @@
 		</div>
 	</header>
 	<main>
-		<div style="text-align: center; margin-bottom: 30px;">
-			<img width="80%" height="50%" src='{{asset("mainpic.jpeg")}}'>
+		<div style="text-align: center; margin-bottom: 30px;  max-width: 800px; margin:0 auto;">
+			<img  width="80%" height="50%" src='{{asset("mainpic.jpeg")}}'>
 		</div> 
 
 		<div class="page-name">ログイン</div>
@@ -59,10 +59,10 @@
 			<a class="btn-square-so-pop" href="{{route('order.form')}}">ゲストとして注文する</a>
 		    <a class="btn-square-so-pop" href="{{route('user.register')}}">新規登録を行う</a>
         </div>
-		
-		
 	</main>
+
 	<footer>
+
 	</footer>
 </body>
 
