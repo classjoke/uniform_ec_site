@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Uniform;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class OrderFormController extends Controller
 {
