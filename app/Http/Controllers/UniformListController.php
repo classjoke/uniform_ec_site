@@ -33,7 +33,8 @@ class UniformListController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->with('error' , '入力値が不足しています。')->withInput();
         }
-        $uniform = Uniform::find($request->uniform_id);
+//         $uniform = Uniform::find($request->uniform_id);
+        $uniform = Uniform::withTrashed()->get()->find($request->uniform_id);
         $uniform->price = $request->uniform_price;
         $uniform->name = $request->uniform_name;
         $uniform->stock = $request->uniform_stock;
