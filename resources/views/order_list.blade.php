@@ -74,14 +74,14 @@
 							@if ($orderInfo->payment_status == 0)
 								未入金
 							@else
-								入金済み
+								入金済
 							@endisset
 						</td>
 						<td>
 							@if ($orderInfo->shipping_status == 0)
 								未発送
 							@else
-								発送済み
+								発送済
 							@endisset	
 						</td>
 						<td><a class="btn-square-so-pop" href="{{route('order.detail')}}?id={{$orderInfo->id}}">詳細</a></td>
