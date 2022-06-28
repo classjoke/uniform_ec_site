@@ -85,7 +85,7 @@
 					<td><input name="remarks_column" type="text"></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="submit-button"><input type="submit" value="購入"></td>
+					<td colspan="2" class="submit-button"><input id="submitBtn" type="submit" value="購入" @if(count($uniformList) == 0 || $uniformList[0]->stock <= 0) disabled @endif></td>
 				</tr>
 		</table>
 		</form>
@@ -112,9 +112,12 @@
 		if(stock <= 0){
 			quantity.style.display ="none";
 			document.getElementById('soldOut').style.display = "inline-block";
+			$('#submitBtn').prop('disabled', true);
+
 		}else {
 			quantity.style.display ="inline-block";
 			document.getElementById('soldOut').style.display = "none";
+			$('#submitBtn').prop('disabled', false);
 			quantity.max = stock;
 			quantity.value = 1;
 		}
