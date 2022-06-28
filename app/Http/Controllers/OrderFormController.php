@@ -66,12 +66,17 @@ class OrderFormController extends Controller
         $form['total_price'] = $uniform->price * $form['quantity'];
         
         //注文したらメールを送信
-        Mail::send(new OrderMail($form));
+        //Mail::send(new OrderMail($form));
 
         // 在庫数現象処理
         $uniform->stock -= $form['quantity'];
         $uniform->save();
 
+        // ログインユーザーの権限を取得
+        if ($request->session()->has('userInfo')) {
+            $form['auth'] = $request->session()->get('userInfo')->authority;
+        }
+        
         return view('order_confirm', ['data'=>$form]);
     }
     

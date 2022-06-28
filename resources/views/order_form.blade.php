@@ -27,7 +27,11 @@
 				<div class="logout">
 					<a href="{{route('logout')}}">ログアウト</a>
 				</div>			
-				@endisset
+				@else
+				<div class="logout">
+					<a href="{{route('logout')}}">トップページに戻る</a>
+				</div>
+				@endisset		
 			</div>
 		</div>
 		<hr class="sub-hr">
