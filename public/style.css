@@ -165,6 +165,11 @@ h1 {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }
 
+  .disabled {
+    background: darkgray;
+    border: solid 2px gray;
+  }
+
   .menu-btn {
     display: block;
     text-decoration: none;

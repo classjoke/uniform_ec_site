@@ -66,7 +66,7 @@ class OrderFormController extends Controller
         $form['total_price'] = $uniform->price * $form['quantity'];
         
         //注文したらメールを送信
-        //Mail::send(new OrderMail($form));
+        Mail::send(new OrderMail($form));
 
         // 在庫数現象処理
         $uniform->stock -= $form['quantity'];
