@@ -68,7 +68,7 @@ class OrderFormController extends Controller
         //注文したらメールを送信
         Mail::send(new OrderMail($form));
 
-        // 在庫数現象処理
+        // 在庫数減少処理
         $uniform->stock -= $form['quantity'];
         $uniform->save();
 

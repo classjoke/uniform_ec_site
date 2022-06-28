@@ -37,8 +37,11 @@
 			@foreach ($uniformList as $uniform)
 				@isset ($uniform->image_path)
 				<div class="item">
-					<img width="200" height="200" src='{{asset("uploads/" . $uniform->image_path)}}'>
-					<p>{{$uniform->name}}</p>
+					<img width="80%" src='{{asset("uploads/" . $uniform->image_path)}}'>
+					<p>
+						{{$uniform->name}}<br>
+						￥{{$uniform->price}}
+					</p>
 				</div>
 				@endisset
 			@endforeach
