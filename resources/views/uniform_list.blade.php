@@ -46,6 +46,7 @@
 		<table class="main-table">
 			<tr>
 				<th class="no">No</th>
+				<th class="image">イメージ</th>
 				<th class="name">商品名</th>
 				<th class="type">価格</th>
 				<th class="quantity">在庫数</th>
@@ -60,6 +61,11 @@
 						id="uniform_data_{{$uniform->id}}"
 					>
 						<td>{{$uniform->id}}</td>
+						<td>
+							@isset ($uniform->image_path)
+            				<img width="100" height="100" src='{{asset("uploads/" . $uniform->image_path)}}'>
+            				@endisset
+						</td>
 						<td>{{$uniform->name}}</td>
 						<td>\{{$uniform->price}}</td>
 						<td>{{$uniform->stock}}</td>
@@ -77,6 +83,11 @@
 						<form action='{{route("uniform.update")}}' method="post">
 							@csrf
 							<td>{{$uniform->id}}</td>
+							<td>
+								@isset ($uniform->image_path)
+            					<img width="100" height="100" src='{{asset("uploads/" . $uniform->image_path)}}'>
+            					@endisset
+							</td>
 							<input type="hidden" name="uniform_id" value="{{$uniform->id}}">
     						<td><input type="text" name="uniform_name" value="{{$uniform->name}}"></td>
     						<td>\<input type="text" name="uniform_price" value="{{$uniform->price}}"></td>
