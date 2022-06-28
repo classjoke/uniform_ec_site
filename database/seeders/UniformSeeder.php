@@ -17,7 +17,7 @@ class UniformSeeder extends Seeder
         Uniform::create([
             'name' => 'ユニフォームA',
             'price' => 1000,
-            'stock' => 10,
+            'stock' => 0,
             'image_path' => "pic1.png",
         ]);
 
@@ -31,14 +31,14 @@ class UniformSeeder extends Seeder
         Uniform::create([
             'name' => 'ユニフォームC',
             'price' => 3000,
-            'stock' => 10,
+            'stock' => 30,
             'image_path' => "pic3.png",
         ]);
 
         Uniform::create([
             'name' => 'ユニフォームD',
             'price' => 3000,
-            'stock' => 10,
+            'stock' => 0,
             'image_path' => "pic4.png",
         ]);
 

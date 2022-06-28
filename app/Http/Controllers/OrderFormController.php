@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Uniform;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class OrderFormController extends Controller
 {
@@ -72,6 +72,11 @@ class OrderFormController extends Controller
         $uniform->stock -= $form['quantity'];
         $uniform->save();
 
+        // ログインユーザーの権限を取得
+        if ($request->session()->has('userInfo')) {
+            $form['auth'] = $request->session()->get('userInfo')->authority;
+        }
+        
         return view('order_confirm', ['data'=>$form]);
     }
     
