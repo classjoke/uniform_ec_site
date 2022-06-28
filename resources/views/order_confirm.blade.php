@@ -22,15 +22,7 @@
 			<div class="page-name">注文完了画面</div>
 
 			<div class="earnings">
-				@isset($data['auth'])
-				<div class="logout">
-					<a href="{{route('logout')}}">ログアウト</a>
-				</div>
-				@else
-				<div class="logout">
-					<a href="{{route('logout')}}">トップページに戻る</a>
-				</div>
-				@endisset
+				
 			</div>
 
 		</div>
@@ -68,7 +60,20 @@
 				<td>{{$data['order_date']}}</td>
 			</tr>
 		</table>
-		<div class="redirect-link"><a href="{{route('order.form')}}">注文画面へもどる</a></div>
+		<div style="text-align: center; padding-top: 30px;">
+		@isset($data['auth'])
+				<div class="logout">
+					<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>
+				</div>
+				@else
+				<div class="logout">
+					<a class="btn-square-so-pop" href="{{route('logout')}}">トップページに戻る</a>
+				</div>
+		@endisset
+		</div>
+		<div class="redirect-link">
+			<a class="btn-square-so-pop" href="{{route('order.form')}}">注文画面へもどる</a>
+		</div>
 	</main>
 
 	<footer>
