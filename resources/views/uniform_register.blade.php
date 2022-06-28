@@ -11,7 +11,7 @@
 
 <body>
 	<header>
-		<h1>受注管理システム</h1>
+		<h1>ユニフォーム着ようぜ！！</h1>
 		<hr class="admin-hr">
 
 		<div class="sub-header">
