@@ -15,9 +15,11 @@
 		<hr class="admin-hr">
 
 		<div class="sub-header">
-			<div class="links">
-				<!-- links -->
+			<div class="links" style="margin: 10px;">
+				<a class="btn-square-so-pop" href="{{route('order.list')}}">注文管理</a>
+				<a class="btn-square-so-pop" href="{{route('uniform.list')}}">商品一覧</a>
 			</div>
+				<!-- links -->
 
 			<div class="page-name">ユニフォーム登録</div>
 
