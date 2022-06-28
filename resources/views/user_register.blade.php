@@ -26,7 +26,7 @@
        
     </header>
     <main>
-        <div style="text-align: center; margin-bottom: 30px;">
+        <div style="text-align: center; margin-bottom: 30px;  max-width: 800px; margin:0 auto;">
 			<img width="80%" height="50%" src='{{asset("mainpic.jpeg")}}'>
 		</div>
 
