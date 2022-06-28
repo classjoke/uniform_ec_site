@@ -76,7 +76,7 @@
 					<td><input name="remarks_column" type="text" placeholder="備考欄"></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="submit-button"><input class="btn-square-so-pop" id="submitBtn" type="submit" value="購入" @if(count($uniformList) == 0 || $uniformList[0]->stock <= 0) disabled @endif></td>
+					<td colspan="2" class="submit-button"><input class="btn-square-so-pop" id="submitBtn" type="submit" value="購入"></td>
 				</tr>
 		</table>
 		<div style="text-align: center;">
@@ -100,6 +100,14 @@
 
 <script>
 	const stocks = @json($uniformList);
+	$(function(){
+		if(stocks.length <= 0 || stocks[0].stock <= 0){
+			$('#submitBtn').prop('disabled', true);
+			$('#submitBtn').addClass("disabled");
+		}
+	})
+
+	
 	$('#uniforms').change(function() {
 		let selected = $('option:selected');
 		let uniform_id = selected.val();
@@ -111,11 +119,13 @@
 			quantity.style.display ="none";
 			document.getElementById('soldOut').style.display = "inline-block";
 			$('#submitBtn').prop('disabled', true);
+			$('#submitBtn').addClass("disabled");
 
 		}else {
 			quantity.style.display ="inline-block";
 			document.getElementById('soldOut').style.display = "none";
 			$('#submitBtn').prop('disabled', false);
+			$('#submitBtn').removeClass("disabled");
 			quantity.max = stock;
 			quantity.value = 1;
 		}
