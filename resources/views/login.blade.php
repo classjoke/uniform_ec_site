@@ -11,37 +11,39 @@
 
 <body>
 	<header>
-		<h1>受注管理システム</h1>
-		<hr class="main-hr">
+		<h1>ユニフォーム着ようぜ！！</h1>
 
 		<div class="sub-header">
 			<div class="links">
 				<!-- links -->
 			</div>
 
-			<div class="page-name">ログイン画面</div>
-
 			<div class="earnings">
 				<!--  -->
 			</div>
 		</div>
-		<hr class="sub-hr">
 	</header>
 	<main>
+		<div style="text-align: center; margin-bottom: 30px;">
+			<img width="80%" height="50%" src='{{asset("mainpic.jpeg")}}'>
+		</div> 
+
+		<div class="page-name">ログイン</div>
+	
 		<form action="{{route('login')}}" method="post">
     		@csrf
     		<table class="order-form">
     			<tr>
-    				<th>ユーザーID</th>
-    				<td><input name="login_id" type="text" required="required" value="{{ old('login_id')}}"></td>
+    				{{-- <th>ユーザーID</th> --}}
+    				<td><input name="login_id" type="text" required="required" value="{{ old('login_id')}}" placeholder="ユーザーID"></td>
     			</tr>
     			<tr>
-    				<th>パスワード</th>
-    				<td><input name="password" type="password" required="required" value="{{ old('password')}}"></td>
+    				{{-- <th>パスワード</th> --}}
+    				<td><input name="password" type="password" required="required" value="{{ old('password')}}" placeholder="パスワード"></td>
     			</tr>
     			<tr>
     				<td colspan="2" class="submit-button">
-    					<input type="submit" value="ログイン">
+    					<input class="btn-square-so-pop" type="submit" value="ログイン">
     				</td>
     			</tr>
     		</table>
@@ -53,9 +55,9 @@
 			</div>
 		@endif
 
-        <div style="text-align: center">
-            <div><a href="{{route('order.form')}}">ゲストとして注文する</a></div>
-			<div><a href="{{route('user.register')}}">新規登録を行う</a></div>
+        <div style="text-align: center; padding-top: 30px;">
+			<a class="btn-square-so-pop" href="{{route('order.form')}}">ゲストとして注文する</a>
+		    <a class="btn-square-so-pop" href="{{route('user.register')}}">新規登録を行う</a>
         </div>
 		
 		

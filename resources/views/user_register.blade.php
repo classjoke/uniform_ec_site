@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="jp">
 
 <head>
@@ -10,48 +11,47 @@
 
 <body>
     <header>
-        <h1>受注管理システム</h1>
-        <hr class="main-hr">
+        <h1>ユニフォーム着ようぜ！！</h1>
 
         <div class="sub-header">
             <div class="links">
                 <!-- links -->
             </div>
-
-            <div class="page-name">一般ユーザー登録登録</div>
-
             <div class="earnings">
-
+                <!--  -->
             </div>
         </div>
-        <hr class="sub-hr">
+        
+        {{-- <hr class="sub-hr"> --}}
+       
     </header>
     <main>
+        <div style="text-align: center; margin-bottom: 30px;">
+			<img width="80%" height="50%" src='{{asset("mainpic.jpeg")}}'>
+		</div>
+
+        <div class="page-name">一般ユーザー登録</div>
+
     	<form action="{{ route('user.register') }}" method="post">
         	<table class="order-form">
                 @csrf
                 <tr>
-                    <th>氏名</th>
-                    <td><input name="name" type="text" required="required"></td>
+                    <td><input name="name" type="text" required="required" placeholder="氏名"></td>
                 </tr>
                 <tr>
-                    <th>メールアドレス</th>
-                    <td><input name="email" type="email" required="required"></td>
+                    <td><input name="email" type="email" required="required" placeholder="メールアドレス"></td>
                 </tr>
                 <tr>
-                    <th>パスワード</th>
-                    <td><input name="password" type="password" required="required"></td>
+                    <td><input name="password" type="password" required="required" placeholder="パスワード"></td>
                 </tr>
                 <tr>
-                    <th>住所</th>
-                    <td><input name="address" type="text" required="required"></td>
+                    <td><input name="address" type="text" required="required" placeholder="住所"></td>
                 </tr>
                 <tr>
-                    <th>ログインID</th>
-                    <td><input name="login_id" type="text" required="required"></td>
+                    <td><input name="login_id" type="text" required="required" placeholder="ログインID"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" class="submit-button"><input type="submit" value="登録"></td>
+                    <td colspan="2" class="submit-button"><input class="btn-square-so-pop" type="submit" value="登録"></td>
                 </tr>
         	</table>
         </form>
@@ -60,6 +60,11 @@
 				{{ session('error') }}
 			</div>
 		@endif
+        <div style="text-align: center;">
+            <div class="logout">
+                <a class="btn-square-so-pop" href="{{route('logout')}}">トップページに戻る</a>
+            </div>					
+        </div>
     </main>
     <footer>
 

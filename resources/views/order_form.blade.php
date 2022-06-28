@@ -22,16 +22,9 @@
 
 			<div class="page-name">注文画面</div>
 
-			<div class="earnings">
-				@isset($user)
-				<div class="logout">
-					<a href="{{route('logout')}}">ログアウト</a>
-				</div>			
-				@else
-				<div class="logout">
-					<a href="{{route('logout')}}">トップページに戻る</a>
+				<div class="earnings">
+		
 				</div>
-				@endisset		
 			</div>
 		</div>
 		<hr class="sub-hr">
@@ -52,21 +45,17 @@
 		@csrf
 		<table class="order-form">
 				<tr>
-					<th>名前</th>
-					<td><input name="name" type="text" value="{{@$user->name}}" required="required"></td>
+					<td><input name="name" type="text" value="{{@$user->name}}" required="required" placeholder="氏名"></td>
 				</tr>
 				<tr>
-					<th>mail</th>
-					<td><input name="email" type="email" value="{{@$user->email}}" required="required"></td>
+					<td><input name="email" type="email" value="{{@$user->email}}" required="required" placeholder="メールアドレス"></td>
 				</tr>
 				<tr>
-					<th>住所</th>
-					<td><input name="address" type="text" value="{{@$user->address}}" required="required"></td>
+					<td><input name="address" type="text" value="{{@$user->address}}" required="required" placeholder="住所"></td>
 				</tr>
 				<tr>
-					<th>商品</th>
 					<td>
-						<select name="uniform_id" id="uniforms">
+						<select name="uniform_id" id="uniforms" style="width: 50%; height:30px">
 							@foreach($uniformList as $uniform)
 								<option value="{{$uniform->id}}">{{$uniform->name}}</option>
 							@endforeach
@@ -74,7 +63,6 @@
 					</td>
 				</tr>
 				<tr>
-					<th>個数</th>
 					<td>
 						@if (count($uniformList) !== 0)
 							<input @if($uniformList[0]->stock <= 0) style="display:none" @endif id="quantity" name="quantity" type="number" min=1 max={{$uniformList[0]->stock}} required="required">
@@ -85,13 +73,19 @@
 					</td>
 				</tr>
 				<tr>
-					<th>備考欄</th>
-					<td><input name="remarks_column" type="text"></td>
+					<td><input name="remarks_column" type="text" placeholder="備考欄"></td>
 				</tr>
 				<tr>
-					<td colspan="2" class="submit-button"><input id="submitBtn" type="submit" value="購入" @if(count($uniformList) == 0 || $uniformList[0]->stock <= 0) disabled @endif></td>
+					<td colspan="2" class="submit-button"><input class="btn-square-so-pop" id="submitBtn" type="submit" value="購入" @if(count($uniformList) == 0 || $uniformList[0]->stock <= 0) disabled @endif></td>
 				</tr>
 		</table>
+		<div style="text-align: center;">
+			@isset($user)
+				<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>			
+			@else
+				<a class="btn-square-so-pop" href="{{route('logout')}}">トップページに戻る</a>
+			@endisset
+		</div>
 		</form>
 		@if(session('error'))
 			<div class="password-missed" role="alert" style="display:block">
