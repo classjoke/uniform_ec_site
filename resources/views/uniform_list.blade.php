@@ -18,6 +18,7 @@
 		<div class="sub-header">
 			<div class="links">
 				<a href="{{ route('uniform.insert') }}">商品登録</a>　　
+				<a href="{{ route('order.list') }}">受注管理一覧</a>　　
 				商品削除:
 				<select name="uniform" id="uniform">
 					@foreach ($uniformList as $uniform)
@@ -63,7 +64,7 @@
 						<td>{{$uniform->id}}</td>
 						<td>
 							@isset ($uniform->image_path)
-            				<img width="100" height="100" src='{{asset("uploads/" . $uniform->image_path)}}'>
+            				<img width="100" src='{{asset("uploads/" . $uniform->image_path)}}'>
             				@endisset
 						</td>
 						<td>{{$uniform->name}}</td>

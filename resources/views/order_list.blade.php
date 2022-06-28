@@ -17,6 +17,8 @@
 
 		<div class="sub-header">
 			<div class="links">
+				<a href="{{ route('uniform.insert') }}">商品登録</a>
+				<a href="{{ route('uniform.list') }}">商品一覧</a>
 				商品削除:
 				<select name="uniform" id="uniform">
 					@foreach ($uniformList as $uniform)
