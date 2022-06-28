@@ -12,7 +12,10 @@
 
 <body>
 	<header>
-		<h1>受注管理システム</h1>
+		<div style="display: flex; align-items: center;">
+			<img style="margin: 20px; display:block;" width="20%" height="20%" src='{{asset("mainpic.jpeg")}}'>
+			<h1 style="margin-left: 17%;">受注管理システム</h1>
+		</div>
 		<hr class="main-hr">
 
 		<div class="sub-header">
