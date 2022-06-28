@@ -22,8 +22,17 @@
 			<div class="page-name">注文完了画面</div>
 
 			<div class="earnings">
-				<!--  -->
+				@isset($data['auth'])
+				<div class="logout">
+					<a href="{{route('logout')}}">ログアウト</a>
+				</div>
+				@else
+				<div class="logout">
+					<a href="{{route('logout')}}">トップページに戻る</a>
+				</div>
+				@endisset
 			</div>
+
 		</div>
 		<hr class="sub-hr">
     </header>
