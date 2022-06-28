@@ -17,31 +17,33 @@
 
 		<div class="sub-header">
 			<div class="links">
-				<a href="{{ route('uniform.insert') }}">商品登録</a>　　
 				商品削除:
 				<select name="uniform" id="uniform">
 					@foreach ($uniformList as $uniform)
 						<option value="{{$uniform->id}}">{{$uniform->name}}</option>
 					@endforeach
 				</select>
-				<button class="btn-danger">削除</button>
+				<button class="btn-square-so-pop btn-danger">削除</button>
 			</div>
 
 			<div class="page-name">受注管理一覧</div>
 
 			<div class="earnings">
 				
-				<button type="button" id="visualization" onclick="visualization()">
+				<button class="btn-square-so-pop" type="button" id="visualization" onclick="visualization()">
 					削除済み商品の注文を表示
 				</button>
-
-				<a href="{{route('logout')}}">ログアウト</a>
+				<a class="btn-square-so-pop" href="{{route('logout')}}">ログアウト</a>
 			</div>
+				
 		</div>
 		<hr class="sub-hr">
 	</header>
 
 	<main>
+		<div style="text-align: center; padding: 30px 0px;">
+			<a class="btn-square-so-pop" href="{{ route('uniform.insert') }}">商品登録</a>
+		</div>
 		<table class="main-table">
 			<tr>
 				<th class="no">No</th>
@@ -81,7 +83,7 @@
 								発送済み
 							@endisset	
 						</td>
-						<td><a href="{{route('order.detail')}}?id={{$orderInfo->id}}">詳細</a></td>
+						<td><a class="btn-square-so-pop" href="{{route('order.detail')}}?id={{$orderInfo->id}}">詳細</a></td>
 					</tr>
             @endforeach
 		</table>

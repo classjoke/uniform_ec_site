@@ -17,8 +17,8 @@
         <hr class="admin-hr">
 
         <div class="sub-header">
-            <div class="links">
-                <a href="{{route('order.list')}}">注文管理</a>
+            <div class="links" style="margin: 10px;">
+                <a class="btn-square-so-pop" href="{{route('order.list')}}">注文管理</a>
             </div>
 
             <div class="page-name">注文詳細</div>
@@ -66,7 +66,7 @@
                     <div id="payment-status">
                         @if($orderDetail->payment_status == 0)
                             未入金
-                            <div id="payment-btn"><button type="button" onclick="clickPayBtn()">入金済みにする</button></div>
+                            <div id="payment-btn"><button class="btn-square-so-pop" type="button" onclick="clickPayBtn()">入金済みにする</button></div>
                         @elseif($orderDetail->payment_status == 1)
                             入金済み
                         @endif
@@ -79,7 +79,7 @@
                     <div id="shipping-status">
                         @if($orderDetail->shipping_status == 0)
                             未発送
-                            <div id="shipping-btn"><button type="button" onclick="clickShipBtn()">発送済みにする</button></div>
+                            <div id="shipping-btn"><button class="btn-square-so-pop" type="button" onclick="clickShipBtn()">発送済みにする</button></div>
                         @elseif($orderDetail->shipping_status == 1)
                             入金済み
                         @endif
